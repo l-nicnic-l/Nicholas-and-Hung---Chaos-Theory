@@ -4,7 +4,7 @@
   "metadata": {
     "colab": {
       "provenance": [],
-      "authorship_tag": "ABX9TyPZXyOsyO3ZFo53pkMZykGe",
+      "authorship_tag": "ABX9TyOje789dtRRsB7T3Mrq2KOl",
       "include_colab_link": true
     },
     "kernelspec": {
@@ -106,7 +106,8 @@
     {
       "cell_type": "code",
       "source": [
-        "#Euler approximation of two systems"
+        "#Defining euler approximation algorithm\n",
+        "#Euler approximation of differential equation: y(n+1) = y(n) + h * f(t(n), y(n))"
       ],
       "metadata": {
         "id": "2pTh1WJQSjtX"
@@ -116,9 +117,27 @@
     },
     {
       "cell_type": "code",
-      "source": [],
+      "source": [
+        "def euler_step(f, t, state, h):\n",
+        "  return state + h * f(t + state)"
+      ],
       "metadata": {
         "id": "sPa4j_6izXcx"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "#Variables:\n",
+        "#state -> initial conditions, [x,y,z]\n",
+        "#h -> step size\n",
+        "#t -> current time\n",
+        "#f -> functions(lorenz_deriv)"
+      ],
+      "metadata": {
+        "id": "949zh3n1Ch3h"
       },
       "execution_count": null,
       "outputs": []
