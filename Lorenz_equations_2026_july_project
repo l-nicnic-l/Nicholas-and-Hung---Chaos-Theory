@@ -1,0 +1,127 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyPZXyOsyO3ZFo53pkMZykGe",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/l-nicnic-l/Nicholas-and-Hung---Chaos-Theory/blob/main/Lorenz_equations_2026_july_project\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 1,
+      "metadata": {
+        "id": "d1dxRliVNy3c"
+      },
+      "outputs": [],
+      "source": [
+        "#Numerical Analysis of Chaotic Dynamics in the Lorenz System"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "import numpy as np"
+      ],
+      "metadata": {
+        "id": "zBALmDcVkuoT"
+      },
+      "execution_count": 2,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "#Constants for lorenz system. Constants are from the Lorenz atmospheric convection model\n",
+        "SIGMA = 10.0\n",
+        "RHO = 28.0\n",
+        "BETA = 8.0 / 3.0"
+      ],
+      "metadata": {
+        "id": "Mypf4AboOpqz"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "def lorenz_deriv(t, state, sigma=10.0, beta=8/3, rho=28.0):\n",
+        "  x, y, z = state\n",
+        "\n",
+        "  dx = sigma * (y - x)\n",
+        "  dy = x * (rho - z) - y\n",
+        "  dz = x * y - beta * z\n",
+        "\n",
+        "  return np.array([dx, dy, dz])"
+      ],
+      "metadata": {
+        "id": "DaJ9SDzxky8m"
+      },
+      "execution_count": 7,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "print(lorenz_deriv(0, np.array([1.0, 1.0, 1.0])))"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "uMwpgskZnVAu",
+        "outputId": "451de5b6-aeec-401b-af90-681ff9fab4fe"
+      },
+      "execution_count": 8,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "[ 0.         26.         -1.66666667]\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "#Euler approximation of two systems"
+      ],
+      "metadata": {
+        "id": "2pTh1WJQSjtX"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [],
+      "metadata": {
+        "id": "sPa4j_6izXcx"
+      },
+      "execution_count": null,
+      "outputs": []
+    }
+  ]
+}
