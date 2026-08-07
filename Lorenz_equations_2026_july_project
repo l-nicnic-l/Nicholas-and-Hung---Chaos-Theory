@@ -4,7 +4,7 @@
   "metadata": {
     "colab": {
       "provenance": [],
-      "authorship_tag": "ABX9TyNa8oFlNUBlF6lVahV6s/r0",
+      "authorship_tag": "ABX9TyMS5cLlg8PcGtd1XSP1u9KL",
       "include_colab_link": true
     },
     "kernelspec": {
@@ -28,7 +28,7 @@
     },
     {
       "cell_type": "code",
-      "execution_count": 3,
+      "execution_count": 90,
       "metadata": {
         "id": "d1dxRliVNy3c"
       },
@@ -45,7 +45,7 @@
       "metadata": {
         "id": "zBALmDcVkuoT"
       },
-      "execution_count": 4,
+      "execution_count": 91,
       "outputs": []
     },
     {
@@ -59,7 +59,7 @@
       "metadata": {
         "id": "Mypf4AboOpqz"
       },
-      "execution_count": 5,
+      "execution_count": 92,
       "outputs": []
     },
     {
@@ -78,7 +78,7 @@
       "metadata": {
         "id": "DaJ9SDzxky8m"
       },
-      "execution_count": 6,
+      "execution_count": 93,
       "outputs": []
     },
     {
@@ -91,9 +91,9 @@
           "base_uri": "https://localhost:8080/"
         },
         "id": "uMwpgskZnVAu",
-        "outputId": "4683edf2-0754-499d-b7c6-9948e1bb8866"
+        "outputId": "78e1093b-f272-4e5b-e93b-5b0e1e26ce6d"
       },
-      "execution_count": 7,
+      "execution_count": 94,
       "outputs": [
         {
           "output_type": "stream",
@@ -116,7 +116,7 @@
       "metadata": {
         "id": "sPa4j_6izXcx"
       },
-      "execution_count": 8,
+      "execution_count": 95,
       "outputs": []
     },
     {
@@ -131,7 +131,7 @@
       "metadata": {
         "id": "949zh3n1Ch3h"
       },
-      "execution_count": 9,
+      "execution_count": 96,
       "outputs": []
     },
     {
@@ -144,7 +144,7 @@
       "metadata": {
         "id": "miKmSama22sg"
       },
-      "execution_count": 10,
+      "execution_count": 97,
       "outputs": []
     },
     {
@@ -168,9 +168,9 @@
           "base_uri": "https://localhost:8080/"
         },
         "id": "TSpUbhqtUisT",
-        "outputId": "6690711c-881a-4c84-9a5a-fb467adb64bf"
+        "outputId": "4fb6da61-0d04-4e21-b93f-713d20c2ce54"
       },
-      "execution_count": 11,
+      "execution_count": 98,
       "outputs": [
         {
           "output_type": "stream",
@@ -189,7 +189,7 @@
       "metadata": {
         "id": "jCkZkYfC-RJh"
       },
-      "execution_count": 12,
+      "execution_count": 99,
       "outputs": []
     },
     {
@@ -221,9 +221,9 @@
           "height": 653
         },
         "id": "2s2GIj_N_WP0",
-        "outputId": "ac71e687-0b2b-4684-df00-aa02be621c49"
+        "outputId": "8ad40409-c0f5-4f16-b200-0ba90fd98fb4"
       },
-      "execution_count": 13,
+      "execution_count": 100,
       "outputs": [
         {
           "output_type": "display_data",
@@ -252,7 +252,7 @@
       "metadata": {
         "id": "yHqPFs2iu76X"
       },
-      "execution_count": 14,
+      "execution_count": 101,
       "outputs": []
     },
     {
@@ -269,7 +269,7 @@
       "metadata": {
         "id": "ggPDVrIg2-3O"
       },
-      "execution_count": 15,
+      "execution_count": 102,
       "outputs": []
     },
     {
@@ -291,15 +291,178 @@
           "base_uri": "https://localhost:8080/"
         },
         "id": "nTaBK0XoDYS0",
-        "outputId": "b64dcc17-cbe8-44cb-f435-6a238d4e004c"
+        "outputId": "a0f3e3c9-969e-4947-a9d6-9e1611f6848d"
       },
-      "execution_count": 16,
+      "execution_count": 103,
       "outputs": [
         {
           "output_type": "stream",
           "name": "stdout",
           "text": [
             "[13.80114428 13.059482   34.81514919]\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [],
+      "metadata": {
+        "id": "XotzjM8ic0SP"
+      },
+      "execution_count": 103,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "#lorenz waterwheel can be modelled by the lorenz equations.\n",
+        "#The variables are defined as such:\n",
+        "#x = angular velocity\n",
+        "#y = a1 = first sine mode (Net weight difference between left and right halves of the wheel)\n",
+        "#z = b1 = first cosine mode (Net weight difference between top and bottom halves of the wheel)"
+      ],
+      "metadata": {
+        "id": "-BZmUQtTaoQY"
+      },
+      "execution_count": 104,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "#Plotting a waterwheel\n",
+        "\n",
+        "from matplotlib.animation import FuncAnimation\n",
+        "from IPython.display import HTML"
+      ],
+      "metadata": {
+        "id": "RtALqvRAZFHz"
+      },
+      "execution_count": 105,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "dt = 0.01\n",
+        "num_steps = 10000\n",
+        "\n",
+        "#initial states: angular velocity = 0, sine mode = 1, cosine mode = 1 (balanced initially)\n",
+        "initial_state = np.array([0, 1, 1])\n",
+        "states = np.zeros((num_steps, 3))\n",
+        "states[0] = initial_state\n",
+        "\n",
+        "t = 0.0\n",
+        "for i in range(1, num_steps):\n",
+        "    states[i] = rk4step(lorenz_deriv, t, states[i-1], dt)\n",
+        "    t += dt\n",
+        "print(states[num_steps - 1])"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "qX0SeZSfYy8I",
+        "outputId": "94736d90-8574-4d5d-b41b-6e9f40ae4764"
+      },
+      "execution_count": 106,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "[ 9.35124929  1.18093122 35.94384669]\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# To show the difference in rotation of two wheels with starting conditions that differ by 0.00000001\n",
+        "# 1. Using arrays for y (a1, first sine mode) and z (b1, first cosine mode),\n",
+        "#    compute the magnitude A(t) = sqrt(y^2 + z^2) and the phase angle\n",
+        "#    theta(t) = atan2(z, y) for every time step.\n",
+        "\n",
+        "# 2. Create a 2D plot showing how the asymmetry magnitude (A) fluctuates\n",
+        "#    over time when the wheel transitions into chaos versus when it spins steadily."
+      ],
+      "metadata": {
+        "id": "w7uIfT-wQa5U"
+      },
+      "execution_count": 107,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "print(states[0:3 , :])"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "XUd1-65RUryb",
+        "outputId": "78e5b631-a3b6-4ddc-86a7-077a95838586"
+      },
+      "execution_count": 108,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "[[0.         1.         1.        ]\n",
+            " [0.09510583 1.00306241 0.9741646 ]\n",
+            " [0.18265469 1.03060239 0.94993007]]\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "#calculation for magnitude and angle (polar coordinates)"
+      ],
+      "metadata": {
+        "id": "ymjqm0sutJPE"
+      },
+      "execution_count": 109,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "#creating new arrays for all y values and for all z values\n",
+        "y_states = states[:, 1]\n",
+        "z_states = states[:, 2]"
+      ],
+      "metadata": {
+        "id": "K0kbz2yVtPZ6"
+      },
+      "execution_count": 110,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "magnitude = np.sqrt(y_states**2 + z_states**2)\n",
+        "print(magnitude[0:5])"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "B_J6mUwYv6ts",
+        "outputId": "99ecf28b-ae7a-43fe-cb76-51df17737f87"
+      },
+      "execution_count": 111,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "[1.41421356 1.39825994 1.40160922 1.42405997 1.46617182]\n"
           ]
         }
       ]
